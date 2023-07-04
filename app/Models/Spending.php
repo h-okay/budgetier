@@ -27,4 +27,20 @@ class Spending extends Model
         return $this->belongsTo(User::class);
     }
 
+    // meilisearch
+    public function toSearchableArray(): array
+    {
+        return [
+            'spending_name' => $this->spending_name,
+            'spending_date' => $this->spending_date,
+            'spending_location' => $this->spending_location,
+            'spending_amount' => $this->spending_amount
+        ];
+    }
+
+    public function searchableAs(): string
+    {
+        return 'spendings_index';
+    }
+
 }

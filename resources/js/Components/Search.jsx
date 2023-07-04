@@ -1,4 +1,5 @@
 import { useForm, Head } from "@inertiajs/react";
+import TextInput from "./TextInput";
 
 export default function Search() {
     const { data, setData, get, processing, reset, errors } = useForm({
@@ -11,13 +12,14 @@ export default function Search() {
     };
 
     return (
-        <div className="flex mb-4 justify-center mt-3">
+        <div className="flex justify-end items-end">
             <form onSubmit={handleSearch}>
-                <input
+                <TextInput
+                    id="search_term"
                     type="text"
-                    className="w-full px-4 py-2 text-gray-700 bg-gray-200 rounded"
-                    placeholder="Search..."
                     value={data.search_term}
+                    placeholder="Search"
+                    className="h-9 dark:bg-gray-300 dark:text-black"
                     onChange={(e) => setData("search_term", e.target.value)}
                 />
             </form>

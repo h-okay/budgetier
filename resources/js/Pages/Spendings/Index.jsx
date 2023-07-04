@@ -30,11 +30,8 @@ export default function Index({ auth, spendings }) {
     return (
         <AuthenticatedLayout user={auth.user}>
             <Head title="Spendings" />
-            <div>
-                <PrimaryButton
-                    className="mt-4 mx-4"
-                    onClick={handleModalToggle}
-                >
+            <div className="flex mx-auto justify-between items-center md:w-3/4 my-3">
+                <PrimaryButton onClick={handleModalToggle}>
                     Add Spending
                 </PrimaryButton>
                 <Modal
@@ -147,7 +144,7 @@ export default function Index({ auth, spendings }) {
                 <Search />
             </div>
 
-            <div className="mt-4 mx-4 bg-white shadow-sm rounded-lg divide-y">
+            <div className="mx-auto bg-white shadow-sm rounded-lg divide-y md:w-3/4 items-center">
                 {spendings.data.map((spending) => (
                     <Spending key={spending.id} spending={spending} />
                 ))}
