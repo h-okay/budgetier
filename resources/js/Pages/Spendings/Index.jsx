@@ -30,7 +30,7 @@ export default function Index({ auth, spendings }) {
     return (
         <AuthenticatedLayout user={auth.user}>
             <Head title="Spendings" />
-            <div className="flex mx-auto my-3 justify-between items-end md:w-3/4 md:text-md text-xs">
+            <div className="flex mx-auto my-3 justify-between items-end md:w-3/4">
                 <PrimaryButton onClick={handleModalToggle}>
                     Add Spending
                 </PrimaryButton>
@@ -143,13 +143,23 @@ export default function Index({ auth, spendings }) {
                 </Modal>
                 <Search />
             </div>
-
+            {spendings.data.length === 0 && (
+                <div className="mx-auto bg-white shadow-sm rounded-lg divide-y md:w-3/4 items-center">
+                    <div className="p-4 text-center">
+                        <p className="text-gray-500 dark:text-gray-400">
+                            Nothing found.
+                        </p>
+                    </div>
+                </div>
+            )}
             <div className="mx-auto bg-white shadow-sm rounded-lg divide-y md:w-3/4 items-center">
                 {spendings.data.map((spending) => (
                     <Spending key={spending.id} spending={spending} />
                 ))}
             </div>
-            <Pagination class="mt-6" links={spendings.links} />
+            {spendings.data.length > 10 && (
+                <Pagination class="mt-6" links={spendings.links} />
+            )}
         </AuthenticatedLayout>
     );
 }
