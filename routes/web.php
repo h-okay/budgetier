@@ -35,6 +35,9 @@ Route::resource('spendings', SpendingController::class)
     ->only(['index', 'store'])
     ->middleware(['auth', 'verified']);
 
+Route::get('/spendings/search', [TextSearchController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('spendings.search');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -16,7 +16,7 @@ class SpendingController extends Controller
      */
     public function index(): Response
     {
-        $spendings = Spending::with('user:id,name')->latest()->paginate(2);
+        $spendings = Spending::with('user:id,name')->latest()->paginate(10);
         return Inertia::render('Spendings/Index', ['spendings' => $spendings]);
     }
 

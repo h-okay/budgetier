@@ -30,7 +30,7 @@ export default function Index({ auth, spendings }) {
     return (
         <AuthenticatedLayout user={auth.user}>
             <Head title="Spendings" />
-            <div className="flex mx-auto justify-between items-center md:w-3/4 my-3">
+            <div className="flex mx-auto my-3 justify-between items-end md:w-3/4 md:text-md text-xs">
                 <PrimaryButton onClick={handleModalToggle}>
                     Add Spending
                 </PrimaryButton>

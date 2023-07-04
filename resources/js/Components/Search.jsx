@@ -1,4 +1,4 @@
-import { useForm, Head } from "@inertiajs/react";
+import { useForm } from "@inertiajs/react";
 import TextInput from "./TextInput";
 
 export default function Search() {
@@ -8,7 +8,9 @@ export default function Search() {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        get(route("spendings.search"), { onSuccess: () => reset() });
+        get(route("spendings.search"), {
+            onSuccess: () => reset("search_term"),
+        });
     };
 
     return (
